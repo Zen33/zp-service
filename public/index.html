@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- <% if (htmlWebpackPlugin.options.development) { %> -->
+    <script defer>
+      (function () {
+        function isMyScriptLoaded() {
+          var keyword = '/static/js';
+          var scripts = document.getElementsByTagName('script');
+          for (var i = scripts.length; i--;) {
+            if (scripts[i].src.indexOf(keyword) > -1) return true;
+          }
+          return false;
+        }
+        if (!isMyScriptLoaded()) {
+          var div = document.createElement('div');
+          div.style = 'font-family:monospace;font-size:14px;'
+          div.innerHTML = 'Not Found';
+          document.body.appendChild(div);
+        }
+      }());
+    </script>
+    <!-- <% } %> -->
+  </body>
+</html>
